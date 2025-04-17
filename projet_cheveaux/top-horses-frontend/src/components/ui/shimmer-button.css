@@ -1,0 +1,40 @@
+.shimmer-button {
+    position: relative;
+    padding: 16px 32px;
+    background: linear-gradient(to right, #2563eb, #1d4ed8);
+    border: none;
+    border-radius: 12px;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    overflow: hidden;
+    z-index: 0;
+    transition: transform 0.2s ease;
+  }
+  
+  .shimmer-button:hover {
+    transform: scale(1.05);
+  }
+  
+  .shimmer {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -75%;
+    height: 100%;
+    width: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    transform: skewX(-20deg);
+    animation: shimmer 2s infinite;
+    z-index: -1;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      left: -75%;
+    }
+    100% {
+      left: 125%;
+    }
+  }
+  

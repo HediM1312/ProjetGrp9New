@@ -1,0 +1,41 @@
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+  
+  .card {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s, filter 0.3s;
+  }
+  
+  .card:hover {
+    transform: translateY(-10px);
+    filter: grayscale(0%);
+  }
+  
+  .icon {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .description {
+    margin: 10px 0;
+  }
+  
+  .date {
+    font-size: 12px;
+    color: gray;
+  }
+  
