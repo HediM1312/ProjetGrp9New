@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const horseSchema = new mongoose.Schema(
+const sportEventSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -10,7 +10,7 @@ const horseSchema = new mongoose.Schema(
       type: Number,
       required: true,
     },
-    raceDate: {
+    eventDate: {
       type: Date,
       required: true,
     },
@@ -18,11 +18,11 @@ const horseSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    raceName: {
+    eventName: {
       type: String,
       required: true,
     },
-    track: {
+    venue: {
       type: String,
       required: true,
     },
@@ -34,10 +34,27 @@ const horseSchema = new mongoose.Schema(
       type: String,
       default: "Information non disponible",
     },
+    league: {
+      type: String,
+      default: "Unknown League",
+    },
+    homeTeam: {
+      type: String,
+      default: "",
+    },
+    awayTeam: {
+      type: String,
+      default: "",
+    },
+    sport: {
+      type: String,
+      default: "Football",
+    },
   },
   {
     timestamps: true,
   }
 );
 
-module.exports = mongoose.model("Horse", horseSchema);
+// To maintain compatibility with existing code, we'll keep the collection name as "horses"
+module.exports = mongoose.model("SportEvent", sportEventSchema, "horses");

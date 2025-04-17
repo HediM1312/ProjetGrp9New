@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const horseRoutes = require("./routes/horseRoutes");
+const sportRoutes = require("./routes/sportRoutes");
 const authRoutes = require("./routes/authRoutes");
 
 const app = express();
@@ -37,7 +37,7 @@ mongoose
 
 // Routes
 app.use("/api/auth", authRoutes);
-app.use("/api/horses", horseRoutes);
+app.use("/api/sports", sportRoutes);
 
 // Route de base pour vérifier que le serveur fonctionne
 app.get("/health", (req, res) => {

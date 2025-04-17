@@ -4,6 +4,8 @@ const { validationResult } = require("express-validator");
 
 // Générer un token JWT
 const generateToken = (id) => {
+  console.log("Generating token with secret:", process.env.JWT_SECRET);
+  console.log("User ID:", id);
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "30d",
   });
@@ -62,6 +64,7 @@ exports.register = async (req, res) => {
 exports.login = async (req, res) => {
   try {
     const { email, password } = req.body;
+    console.log("Login attempt for:", email);
 
     // Vérifier si l'utilisateur existe
     const user = await User.findOne({ email });
@@ -83,6 +86,7 @@ exports.login = async (req, res) => {
 
     // Générer le token
     const token = generateToken(user._id);
+    console.log("Generated token:", token);
 
     res.json({
       success: true,

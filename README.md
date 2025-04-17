@@ -1,6 +1,6 @@
-# PMU Horse Tracker
+# Football Match Tracker
 
-Application de suivi des courses de chevaux PMU.
+Application de suivi des matchs de football avec système de cotes.
 
 ## Installation
 
@@ -8,7 +8,7 @@ Application de suivi des courses de chevaux PMU.
 
 ```bash
 git clone [votre-repo-url]
-cd pmu-horse-tracker
+cd football-match-tracker
 ```
 
 2. Installez les dépendances :
@@ -34,8 +34,8 @@ Le fichier `.env` doit contenir les variables suivantes :
 - `NODE_ENV` : Environnement (development/production)
 - `FRONTEND_URL` : URL du frontend pour CORS
 - `JWT_SECRET` : Clé secrète pour les tokens JWT
-- `RACING_API_USERNAME` : Nom d'utilisateur de l'API courses
-- `RACING_API_PASSWORD` : Mot de passe de l'API courses
+- `SPORTSDB_API_KEY` : Clé API pour TheSportsDB
+- `SPORTSDB_API_URL` : URL de base de l'API TheSportsDB
 
 ## Démarrage
 
@@ -53,11 +53,11 @@ npm start
 
 ## API Endpoints
 
-- `GET /api/horses/top` : Top 5 des chevaux
-- `GET /api/horses` : Liste de tous les chevaux
-- `GET /api/horses/search` : Recherche de chevaux
-- `GET /api/horses/:id` : Détails d'un cheval
-- `POST /api/horses/update` : Force la mise à jour des données
+- `GET /api/sports/top` : Top 5 des matchs de football
+- `GET /api/sports` : Liste de tous les matchs
+- `GET /api/sports/search` : Recherche de matchs
+- `GET /api/sports/:id` : Détails d'un match
+- `POST /api/sports/update` : Force la mise à jour des données
 
 ## Authentification
 
@@ -68,22 +68,28 @@ npm start
 
 ```
 .
-├── controllers/         # Contrôleurs
+├── controllers/        # Contrôleurs
 ├── models/             # Modèles MongoDB
 ├── routes/             # Routes API
+├── services/           # Services (API)
+├── middleware/         # Middleware (auth)
 ├── server.js           # Point d'entrée
 └── .env                # Variables d'environnement
 ```
 
 ## Structure des données
 
-Les données des chevaux incluent :
+Les données des matchs incluent :
 
-- Nom du cheval
-- Cote
-- Date de course
+- Nom du match (équipe à domicile vs équipe à l'extérieur)
+- Cotes pour la victoire de l'équipe à domicile, match nul, et victoire de l'équipe à l'extérieur
+- Date du match
 - Bookmaker
-- Nom de la course
-- Hippodrome
-- Image URL
-- Description
+- Nom de l'événement
+- Stade
+- URL de l'image
+- Description (ligue, saison)
+- Ligue
+- Équipe à domicile
+- Équipe à l'extérieur
+- Sport
